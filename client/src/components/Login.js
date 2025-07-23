@@ -22,11 +22,13 @@ const Login = () => {
       const res = await axios.post(
         'https://validator-backend-ejesg0auhga8c2c3.eastus-01.azurewebsites.net/api/auth/login',
         formData,
-        { timeout: 15000 } // Set timeout to 15 seconds (15000 ms)
+        { timeout: 60000 } // Set timeout to 60 seconds (60000 ms)
       );
       localStorage.setItem('token', res.data.token);
+      console.log('Login successful, navigating to dashboard');
       navigate('/dashboard');
     } catch (err) {
+      console.log('Login failed:', err);
       console.error(err.response.data);
       alert(err.response.data.msg || 'Login failed. Please try again.');
     } finally {
