@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const { username, password } = formData;
 
@@ -17,7 +19,7 @@ const Login = () => {
     try {
       const res = await axios.post('https://validator-backend-ejesg0auhga8c2c3.eastus-01.azurewebsites.net/api/auth/login', formData);
       localStorage.setItem('token', res.data.token);
-      window.location.href = '/dashboard';
+      navigate('/dashboard'); // Use navigate instead of window.location.href
     } catch (err) {
       console.error(err.response.data);
     }
