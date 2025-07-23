@@ -19,7 +19,7 @@ const Dashboard = () => {
           'x-auth-token': token
         }
       };
-      const res = await axios.get(`https://invoice-validator-backend-a3exajdmcbbrdhc7.eastus-01.azurewebsites.net/api/directory/list?path=${currentPath}`, config);
+      const res = await axios.get(`https://validator-backend02-ghexbaefbeg6ercn.canadacentral-01.azurewebsites.net/api/directory/list?path=${currentPath}`, config);
       setItems(res.data);
     } catch (err) {
       console.error(err.response.data);
@@ -56,7 +56,7 @@ const Dashboard = () => {
         }
       };
       const body = { directoryName: `${currentPath}${directoryName}` };
-      const res = await axios.post('https://invoice-validator-backend-a3exajdmcbbrdhc7.eastus-01.azurewebsites.net/api/directory/create', body, config);
+      const res = await axios.post('https://validator-backend02-ghexbaefbeg6ercn.canadacentral-01.azurewebsites.net/api/directory/create', body, config);
       console.log(res.data);
       alert('Directory created successfully!');
       setDirectoryName('');
@@ -86,7 +86,7 @@ const Dashboard = () => {
         }
       };
 
-      const res = await axios.post('https://invoice-validator-backend-a3exajdmcbbrdhc7.eastus-01.azurewebsites.net/api/directory/upload', formData, config);
+      const res = await axios.post('https://validator-backend02-ghexbaefbeg6ercn.canadacentral-01.azurewebsites.net/api/directory/upload', formData, config);
       console.log(res.data);
       alert('File uploaded successfully!');
       setSelectedFile(null);
@@ -126,7 +126,7 @@ const Dashboard = () => {
               'x-auth-token': token
             }
           };
-          const res = await axios.get(`https://invoice-validator-backend-a3exajdmcbbrdhc7.eastus-01.azurewebsites.net/api/directory/view-image?fileName=${item.name}&currentPath=${currentPath}`, config);
+          const res = await axios.get(`https://validator-backend02-ghexbaefbeg6ercn.canadacentral-01.azurewebsites.net/api/directory/view-image?fileName=${item.name}&currentPath=${currentPath}`, config);
           setPreviewImageUrl(res.data.sasUrl);
           setPreviewFileName(item.name); // Set the file name
         } catch (err) {
@@ -152,7 +152,7 @@ const Dashboard = () => {
           },
           data: { fileName, currentPath } // Send data in body for DELETE request
         };
-        await axios.delete('https://invoice-validator-backend-a3exajdmcbbrdhc7.eastus-01.azurewebsites.net/api/directory/delete-file', config);
+        await axios.delete('https://validator-backend02-ghexbaefbeg6ercn.canadacentral-01.azurewebsites.net/api/directory/delete-file', config);
         alert('File deleted successfully!');
         fetchItems(); // Refresh the list
         setPreviewImageUrl(null); // Clear preview if deleted file was being previewed

@@ -14,7 +14,7 @@ const Login = () => {
   const onSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://invoice-validator-backend-a3exajdmcbbrdhc7.eastus-01.azurewebsites.net/api/auth/login', formData);
+      const res = await axios.post('https://validator-backend02-ghexbaefbeg6ercn.canadacentral-01.azurewebsites.net/api/auth/login', formData);
       localStorage.setItem('token', res.data.token);
       window.location.href = '/dashboard';
     } catch (err) {
