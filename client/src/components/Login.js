@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -43,7 +44,7 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
-      <p style={{ textAlign: 'center', marginTop: '10px' }}>Don't have an account? <a href="/register">Register here</a></p>
+      <p style={{ textAlign: 'center', marginTop: '10px' }}>Don't have an account? <Link to="/register">Register here</Link></p>
     </div>
   );
 };
